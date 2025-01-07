@@ -1,0 +1,1 @@
+{"name":"Local: Swap_and_Minimize","url":"d:\\Backup\\Competitive Programming\\Swap_and_Minimize.cpp","tests":[{"id":1733825801346,"input":"3\n4 3\n-6 3 9 -4 \n3 2\n7 -9 8 \n4 2\n0 -1 0 -9 \n","output":"-7\n-2\n-10\n"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\Backup\\Competitive Programming\\Swap_and_Minimize.cpp","group":"local","local":true}
