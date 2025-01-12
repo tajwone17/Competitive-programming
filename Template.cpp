@@ -15,6 +15,5 @@ main()
     // cin.ignore();
     while (t--)
     {
-        
     }
 }
