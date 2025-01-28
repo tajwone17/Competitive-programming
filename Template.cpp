@@ -5,6 +5,17 @@ using namespace std;
 // const int MAX = 200'007;
 // int a[MAX];
 
+// const int M=998244353;
+// // long long mod(long long x){
+// //     return ((x%M + M)%M);
+// // }
+// // long long add(long long a, long long b){
+// //     return mod(mod(a)+mod(b));
+// // }
+// long long mul(long long a, long long b){
+//     return mod(mod(a)*mod(b));
+// }
+
 main()
 {
     ios_base::sync_with_stdio(false);
