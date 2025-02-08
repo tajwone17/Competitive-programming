@@ -1,5 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
+
+#define faster ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
 #define int long long int
 // const int N = 1e5 + 10;
 // const int MAX = 200'007;
@@ -18,9 +20,7 @@ using namespace std;
 
 main()
 {
-    ios_base::sync_with_stdio(false);
-    cin.tie(nullptr);
-    cout.tie(nullptr);
+    faster;
     int t;
     cin >> t;
     // cin.ignore();
