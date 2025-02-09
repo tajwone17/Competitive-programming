@@ -1,7 +1,10 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-#define faster ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
+#define faster                    \
+    ios_base::sync_with_stdio(0); \
+    cin.tie(0);                   \
+    cout.tie(0);
 #define int long long int
 // const int N = 1e5 + 10;
 // const int MAX = 200'007;
@@ -26,5 +29,13 @@ int32_t main()
     // cin.ignore();
     while (t--)
     {
+        string s;
+        cin >> s;
+        for (int i = 0; i < s.size() - 2; i++)
+        {
+            cout << s[i];
+        }
+        cout << "i";
+        cout << endl;
     }
 }
