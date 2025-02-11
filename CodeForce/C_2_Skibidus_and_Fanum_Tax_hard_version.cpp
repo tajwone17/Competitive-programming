@@ -28,38 +28,35 @@ int32_t main()
             cin >> b[i];
         }
 
-        int b1;
-
+        sort(b.begin(), b.end());
         bool pos = true;
         int prev = -1e9;
 
         for (int i = 0; i < n; i++)
         {
-            for (int j = 0; j < m; j++)
-            {
-                int opt1 = a[i];
-                int opt2 = b[j] - a[i];
+            auto it = lower_bound(b.begin(), b.end(), (a[i] + prev));
+            int b1 = (it != b.end()) ? *it : -1;
+            int opt1 = a[i];
+            int opt2 = b1 - a[i];
 
-                if (opt1 >= prev && opt2 >= prev)
-                {
-                    prev = min(opt1, opt2);
-                }
-                else if (opt1 >= prev)
-                {
-                    prev = opt1;
-                }
-                else if (opt2 >= prev)
-                {
-                    prev = opt2;
-                }
-                else
-                {
-                    pos = false;
-                    break;
-                }
+            if (opt1 >= prev && opt2 >= prev)
+            {
+                prev = min(opt1, opt2);
             }
-            if (!pos)
+            else if (opt1 >= prev)
+            {
+                prev = opt1;
+            }
+            else if (opt2 >= prev)
+            {
+                prev = opt2;
+            }
+            else
+            {
+
+                pos = false;
                 break;
+            }
         }
 
         if (pos)
