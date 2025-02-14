@@ -16,6 +16,7 @@ void dfs(int v)
         if (visited[child])
             continue;
         // take action on child before entering the child node
+        
         dfs(child);
         // take action on child after exiting the child node
     }

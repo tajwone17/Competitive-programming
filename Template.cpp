@@ -27,14 +27,15 @@ void solve(){
     
 }
 
-int32_t main()
+ main()
 {
     faster;
     int t;
     cin >> t;
     // cin.ignore();
-    while (t--)
+    for (int i = 1; i <= t; i++)
     {
-    solve();
+        // cout<<"Case #"<<i<<": ";
+        solve();
     }
 }

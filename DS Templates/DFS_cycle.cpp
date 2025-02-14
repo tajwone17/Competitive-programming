@@ -3,8 +3,8 @@ using namespace std;
 const int N = 1e5 + 10;
 bool visited[N];
 vector<int> g[N];
-vector<int> current_cc;
-vector<vector<int>> cc;
+// vector<int> current_cc;
+// vector<vector<int>> cc;
 bool dfs(int v, int par)
 {
     // take action on vertex before entering the vertex
