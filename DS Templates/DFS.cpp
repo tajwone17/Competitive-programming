@@ -9,8 +9,7 @@ void dfs(int v)
 {
     // take action on vertex before entering the vertex
     visited[v] = true;
-    // cout << v << endl;
-    current_cc.push_back(v);
+ 
     for (int child : g[v])
     {
         if (visited[child])
