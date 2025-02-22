@@ -28,44 +28,43 @@ using namespace std;
 // }
 void solve()
 {
-    int n, m, countA = 0, countB = 0;
+    int n, m, ans = 0, maxFreq = 0;
     cin >> n >> m;
     int arr[n][m];
-    unordered_map<int, int> mp1, mp2;
+    unordered_map<int, int> mp1;
     for (int i = 0; i < n; i++)
     {
         for (int j = 0; j < m; j++)
         {
             cin >> arr[i][j];
-            if (j % 2 == 0 && i % 2 == 0 || j % 2 == 1 && i % 2 == 1)
-            {
-                mp1[arr[i][j]]++;
-                countA++;
-            }
-            else
-            {
-                mp2[arr[i][j]]++;
-                countB++;
-            }
+            mp1[arr[i][j]] = 1;
         }
     }
-    int mx1 = 0, mx2 = 0, mx, mxx1, mxx2;
-    for (auto it1 : mp1)
+
+    for (int i = 0; i < n; ++i)
     {
-        mx1 = max(mx1, it1.second);
-        mxx1 = it1.first;
+        for (int j = 1; j < m; j++)
+        {
+            if (arr[i][j] == arr[i][j - 1])
+
+                mp1[arr[i][j]] = 2;
+        }
     }
-    for (auto it2 : mp2)
+    for (int i = 1; i < n; ++i)
     {
-        mx2 = max(mx2, it2.second);
-        mxx2 = it2.first;
+        for (int j = 0; j < m; j++)
+        {
+            if (arr[i][j] == arr[i - 1][j])
+
+                mp1[arr[i][j]] = 2;
+        }
     }
-    if (mx1 >= mx2)
+    for (auto it : mp1)
     {
-        cout << (countA - mx1) + countB - mp2[mxx1] << endl;
+        ans += it.second;
+        maxFreq = max(maxFreq, it.second);
     }
-    else
-        cout << (countB - mx2) + countA - mp1[mxx2] << endl;
+    cout << ans - maxFreq << endl;
 }
 
 main()
