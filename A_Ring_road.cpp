@@ -2,50 +2,59 @@
 using namespace std;
 
 #define int long long
-#define faster ios::sync_with_stdio(0); cin.tie(0); cout.tie(0);
+#define faster               \
+    ios::sync_with_stdio(0); \
+    cin.tie(0);              \
+    cout.tie(0);
 
-const int N = 105;
-vector<pair<int, int>> adj[N];  // Graph adjacency list
-bool visited[N];  // Visited array for DFS
-int forwardCost = 0;  // Cost of moving in the given direction
+const int N = 1e5 + 10;
+bool visited[N];
+vector<pair<int, int>> adj[N];
 
-// DFS Function to Calculate Forward Cost
-void dfs(int node, int parent) {
-    visited[node] = true;
+void dfs(int v, int &totalCost)
+{
+    // take action on vertex before entering the vertex
+    visited[v] = true;
 
-    for (auto [neighbor, cost] : adj[node]) {
-        if (!visited[neighbor]) {
-            forwardCost += cost; // Add cost if moving forward
-            dfs(neighbor, node);
-        }
+    for (auto child : adj[v])
+    {
+        if (visited[child.first])
+            continue;
+        // take action on child before entering the child node
+        totalCost += child.second;
+        dfs(child.first, totalCost);
+        // take action on child after exiting the child node
     }
+    // take action on vertex before exiting the vertex
 }
 
-int32_t main() {
+int32_t main()
+{
     faster;
 
-    int n;
+    int n, total = 0;
     cin >> n;
-
-    int totalCost = 0;  // Sum of all edges in the cycle
-
-    for (int i = 0; i < n; i++) {
+    set<int> st;
+    set<int> st1;
+    for (int i = 0; i < n; i++)
+    {
         int a, b, c;
         cin >> a >> b >> c;
-        adj[a].push_back({b, c}); // Directed edge
-        adj[b].push_back({a, 0}); // Placeholder for tracking reverse traversal
-        totalCost += c;
+
+        if (st.find(a) != st.end() )
+            adj[a].push_back({b, c});
+        total += c;
+        st.insert(a);
+        st.insert(b);
     }
+    int totalCost = 0;
+    for (int i = 1; i <= n; i++)
+    {
 
-    // Run DFS from node 1 to calculate forward cost
-    memset(visited, false, sizeof(visited));
-    dfs(1, -1);
-
-    // Reverse cost = Total Cost - Forward Cost
-    int reverseCost = totalCost - forwardCost;
-
-    // Minimum cost to make the graph strongly connected
-    cout << min(forwardCost, reverseCost) << endl;
-
-    return 0;
+        if (visited[i])
+            continue;
+        dfs(i, totalCost);
+    }
+    int to = (total - totalCost);
+    cout << min(to, totalCost) << endl;
 }
