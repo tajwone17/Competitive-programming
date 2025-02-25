@@ -10,6 +10,7 @@ using namespace std;
 const int N = 1e5 + 10;
 bool visited[N];
 vector<pair<int, int>> adj[N];
+vector<pair<int, int>> rev[N];
 
 void dfs(int v, int &totalCost)
 {
@@ -43,9 +44,11 @@ int32_t main()
 
         if (st.find(a) != st.end() )
             adj[a].push_back({b, c});
+            else
+            rev[a].push_back({b, c});
         total += c;
         st.insert(a);
-        st.insert(b);
+      
     }
     int totalCost = 0;
     for (int i = 1; i <= n; i++)
