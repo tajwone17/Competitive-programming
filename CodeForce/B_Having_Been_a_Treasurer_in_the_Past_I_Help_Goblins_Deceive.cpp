@@ -28,19 +28,31 @@ using namespace std;
 // }
 void solve()
 {
-   int n,cnt=0;
-   cin>>n;
-   string s;cin>>s;
-   for(int i=0;i<n;i++){
-    if(s[i]=='-'){
-        for(int j=0;j<n;j++){
-            if(s[j]=='_')
-            for(int k=0;k<n;k++){
-                if(s[k]=='-')cnt++;
-            }
-        }
+    int n, counth = 0, countf = 0, ans = 1;
+    cin >> n;
+    string s;
+    cin >> s;
+    for (int i = 0; i < n; i++)
+    {
+        if (s[i] == '_')
+            countf++;
+
+        else
+            counth++;
     }
-   }
+    if (countf < 1 || counth < 2)
+        ans = 0;
+    else if (counth % 2 == 0)
+    {
+        int h = counth / 2;
+        ans = h * h * countf;
+    }
+    else if (counth % 2 != 0)
+    {
+        int h = counth / 2;
+        ans = h * (h + 1) * countf;
+    }
+    cout << ans << endl;
 }
 
 main()
