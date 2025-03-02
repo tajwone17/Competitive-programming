@@ -1,11 +1,14 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-#define faster ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
+#define faster                    \
+    ios_base::sync_with_stdio(0); \
+    cin.tie(0);                   \
+    cout.tie(0);
 #define int long long int
-#define all(n) for(int i=0;i<(n);i++)
-#define sort(v) sort((v).begin(),(v).end())
-#define rsort(v) sort((v).rbegin(),(v).rend())
+#define all(n) for (int i = 0; i < (n); i++)
+#define sort(v) sort((v).begin(), (v).end())
+#define rsort(v) sort((v).rbegin(), (v).rend())
 #define endl "\n"
 #define no cout << "NO" << endl
 #define yes cout << "YES" << endl
@@ -23,21 +26,18 @@ using namespace std;
 // long long mul(long long a, long long b){
 //     return mod(mod(a)*mod(b));
 // }
-void solve(){
-    string s;
-    cin >> s;
-    int x;
-    cin >> x;
- 
-    if ((s == "ABC" && x < 2000) || (s == "ARC" && x < 2800) || (s == "AGC" && x >= 1200)) {
-        cout << "yes" << endl;
-    } else {
-        cout << "no" << endl;
-    }
-
+void solve()
+{
+    int ax, ay, bx, by, cx, cy;
+    cin >> ax >> ay >> bx >> by >> cx >> cy;
+    int dx = cx - bx + ax;
+    int dy = cy - by + ay;
+    int area = abs((ax * by + bx * cy + cx * dy + dx * ay) - (ay * bx + by * cx + cy * dx + dy * ax)) / 2;
+    cout << dx << " " << dy << " ";
+    cout << area << endl;
 }
 
- main()
+main()
 {
     faster;
     int t;
@@ -45,7 +45,7 @@ void solve(){
     // cin.ignore();
     for (int i = 1; i <= t; i++)
     {
-        // cout<<"Case #"<<i<<": ";
+        cout << "Case " << i << ": ";
         solve();
     }
 }

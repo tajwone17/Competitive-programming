@@ -24,17 +24,12 @@ using namespace std;
 //     return mod(mod(a)*mod(b));
 // }
 void solve(){
-    string s;
-    cin >> s;
-    int x;
-    cin >> x;
- 
-    if ((s == "ABC" && x < 2000) || (s == "ARC" && x < 2800) || (s == "AGC" && x >= 1200)) {
-        cout << "yes" << endl;
-    } else {
-        cout << "no" << endl;
-    }
-
+    
+    int n;
+    cin>>n;
+    if(n%3==1)
+    yes;
+    else no;
 }
 
  main()
