@@ -12,7 +12,7 @@ This repository contains initial implementations of solutions to various competi
 
 ## Notable Files
 
-- **Default.cpp**: A template file for starting competitive programming problems.
+- **Template.cpp**: A template file for starting competitive programming problems.
 - **README.md**: Documentation and overview of the repository.
 
 
