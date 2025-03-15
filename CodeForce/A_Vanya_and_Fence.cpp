@@ -24,18 +24,22 @@ using namespace std;
 //     return mod(mod(a)*mod(b));
 // }
 void solve(){
+    int n,h;
     
+cin >> n >> h;
+int ans = n;
+for (int i = 0; i < n; i++)
+{int x;
+    cin >> x;
+    ans += (x>h);
+}
+cout << ans << endl;
 }
 
  main()
 {
     faster;
-    int t;
-    cin >> t;
-    // cin.ignore();
-    for (int i = 1; i <= t; i++)
-    {
-        // cout<<"Case #"<<i<<": ";
+   // cout<<"Case #"<<i<<": ";
         solve();
-    }
+    
 }

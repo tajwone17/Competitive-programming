@@ -42,13 +42,12 @@ int32_t main()
         int a, b, c;
         cin >> a >> b >> c;
 
-        if (st.find(a) != st.end() )
-            adj[a].push_back({b, c});
-            else
-            rev[a].push_back({b, c});
-        total += c;
-        st.insert(a);
       
+            adj[a].push_back({b, 0});
+            adj[b].push_back({a, c});
+       
+        total += c;
+       
     }
     int totalCost = 0;
     for (int i = 1; i <= n; i++)
