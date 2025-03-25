@@ -12,27 +12,26 @@ bool visited[N];
 vector<pair<int, int>> adj[N];
 vector<pair<int, int>> rev[N];
 
-void dfs(int v, int &totalCost)
+void dfs(int v, int &totalCost, int par)
 {
-    // take action on vertex before entering the vertex
+
     visited[v] = true;
 
     for (auto child : adj[v])
     {
-        if (visited[child.first])
-            continue;
-        // take action on child before entering the child node
-        totalCost += child.second;
-        dfs(child.first, totalCost);
-        // take action on child after exiting the child node
+        if (!visited[child.first])
+        {
+            totalCost += child.second;
+            dfs(child.first, totalCost, v);
+        }
+        else if (child.first == 1 && par != 1)
+        {
+            totalCost += child.second;
+        }
     }
-    // take action on vertex before exiting the vertex
 }
-
-int32_t main()
+void solve()
 {
-    faster;
-
     int n, total = 0;
     cin >> n;
     set<int> st;
@@ -42,21 +41,21 @@ int32_t main()
         int a, b, c;
         cin >> a >> b >> c;
 
-      
-            adj[a].push_back({b, 0});
-            adj[b].push_back({a, c});
-       
+        adj[a].push_back({b, c});
+        adj[b].push_back({a, 0});
+
         total += c;
-       
     }
     int totalCost = 0;
-    for (int i = 1; i <= n; i++)
-    {
 
-        if (visited[i])
-            continue;
-        dfs(i, totalCost);
-    }
+    dfs(1, totalCost, -1);
+
     int to = (total - totalCost);
     cout << min(to, totalCost) << endl;
+}
+int32_t main()
+{
+    faster;
+
+    solve();
 }
