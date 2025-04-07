@@ -23,7 +23,7 @@ using namespace std;
 // long long mul(long long a, long long b){
 //     return mod(mod(a)*mod(b));
 // }
-void tajwone17(){
+void solve(){
     
 }
 
@@ -36,6 +36,6 @@ void tajwone17(){
     for (int i = 1; i <= t; i++)
     {
         // cout<<"Case #"<<i<<": ";
-        tajwone17();
+        solve();
     }
 }

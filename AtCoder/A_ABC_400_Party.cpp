@@ -1,11 +1,14 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-#define faster ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
+#define faster                    \
+    ios_base::sync_with_stdio(0); \
+    cin.tie(0);                   \
+    cout.tie(0);
 #define int long long int
-#define all(n) for(int i=0;i<(n);i++)
-#define sort(v) sort((v).begin(),(v).end())
-#define rsort(v) sort((v).rbegin(),(v).rend())
+#define all(n) for (int i = 0; i < (n); i++)
+#define sort(v) sort((v).begin(), (v).end())
+#define rsort(v) sort((v).rbegin(), (v).rend())
 #define endl "\n"
 #define no cout << "NO" << endl
 #define yes cout << "YES" << endl
@@ -23,19 +26,23 @@ using namespace std;
 // long long mul(long long a, long long b){
 //     return mod(mod(a)*mod(b));
 // }
-void tajwone17(){
-    
+void solve()
+{
+    int a;
+    cin >> a;
+    if (400 % a == 0)
+    {
+        cout << 400 / a << endl;
+    }
+    else
+    {
+        cout << -1 << endl;
+    }
 }
 
- main()
+main()
 {
     faster;
-    int t;
-    cin >> t;
-    // cin.ignore();
-    for (int i = 1; i <= t; i++)
-    {
-        // cout<<"Case #"<<i<<": ";
-        tajwone17();
-    }
+
+    solve();
 }

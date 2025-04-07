@@ -36,7 +36,7 @@ void solve(){
 
  
     for (int i = 0; i < n; i++) {
-        
+        bool candidateFound = false;
        
         for (auto it = available.rbegin(); it != available.rend(); ++it) {
             int candidate = *it;
@@ -44,10 +44,11 @@ void solve(){
                 permutation.push_back(candidate);
                 currentPrefix += candidate;
                 available.erase(candidate);
+                candidateFound = true;
                 break;
             }
         }
-      
+        if (!candidateFound) break; 
     }
 
   
