@@ -12,7 +12,10 @@ using namespace std;
 #define endl "\n"
 #define no cout << "NO" << endl
 #define yes cout << "YES" << endl
-// const int N = 1e5 + 10;
+const int N = 1e5 + 10;
+bool visited[N];
+vector<int> g[N];
+
 // const int MAX = 200'007;
 // int a[MAX];
 
@@ -26,8 +29,36 @@ using namespace std;
 // long long mul(long long a, long long b){
 //     return mod(mod(a)*mod(b));
 // }
+
+void dfs(int v,)
+{
+    // take action on vertex before entering the vertex
+    visited[v] = true;
+ 
+    for (int child : g[v])
+    {
+        if (visited[child])
+            continue;
+        // take action on child before entering the child node
+         if(mp[v]==0)mp[child]=1;
+        else mp[child]=0;
+        dfs(child,mp);
+        // take action on child after exiting the child node
+    }
+    // take action on vertex before exiting the vertex
+}
 void tajwone17()
 {
+    int n,m;
+    cin>>n>>m;
+    for(int i=0;i<m;i++){
+        int u,v;
+        cin>>u>>v;
+        g[u].push_back(v);
+        g[v].push_back(u);
+    }
+    unordered_map<int,int> mp;
+    dfs(1,mp);
 }
 
 main()
