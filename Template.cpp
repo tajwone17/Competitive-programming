@@ -17,14 +17,24 @@ using namespace std;
 // int a[MAX];
 
 // const int M=998244353;
-// // long long mod(long long x){
-// //     return ((x%M + M)%M);
-// // }
-// // long long add(long long a, long long b){
-// //     return mod(mod(a)+mod(b));
-// // }
-// long long mul(long long a, long long b){
+// int mod(long long x){
+//     return ((x%M + M)%M);
+// }
+// int add(long long a, long long b){
+//     return mod(mod(a)+mod(b));
+// }
+// int mul(long long a, long long b){
 //     return mod(mod(a)*mod(b));
+// }
+// int mod_pow(int base, int exp) {
+//     int res = 1;
+//     while (exp > 0) {
+//         if (exp & 1)
+//             res = (res * base) % M;
+//         base = (base * base) % M;
+//         exp >>= 1;
+//     }
+//     return res;
 // }
 void tajwone17()
 {
