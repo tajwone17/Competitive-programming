@@ -38,7 +38,60 @@ using namespace std;
 // }
 void tajwone17()
 {
-    
+    int n, p = 1, flag1 = 0;
+    ;
+    int k;
+
+    cin >> n;
+    cin >> k;
+    vector<int> a(n);
+    for (int i = 0; i < n; i++)
+    {
+        cin >> a[i];
+    }
+    int ans = LONG_MAX;
+    if (k == 2 || k == 3 || k == 5)
+    {
+        for (int i = 0; i < n; i++)
+        {
+            int z = a[i] % k;
+            if (z == 0)
+            {
+                cout << 0 << endl;
+                return;
+            }
+            ans = min(ans, k - z);
+        }
+        cout << ans << endl;
+    }
+    else
+    {
+        int cnt = 0;
+        for (int i = 0; i < n; i++)
+        {
+            if (a[i] % 2 == 0)
+                cnt++;
+            int z = a[i] % k;
+            if (z == 0)
+            {
+                cout << 0 << endl;
+                return;
+            }
+            ans = min(ans, k - z);
+        }
+        int m = 0;
+        if (n >= 2 && cnt < 2)
+            m = max((long long)0, 2 - cnt);
+
+        if (cnt > 2)
+        {
+            cout << 0 << endl;
+            return;
+        }
+
+        cout << min(m, ans) << endl;
+        return;
+    }
 }
 
 main()

@@ -38,7 +38,32 @@ using namespace std;
 // }
 void tajwone17()
 {
-    
+
+    int n;
+    cin >> n;
+    vector<int> a(n);
+
+    for (int &x : a)
+        cin >> x;
+
+    int sum = 0;
+    int mx = a[0];
+    int k = 0;
+    for (int i = 1; i < n; ++i)
+    {
+        if (a[i] % 2 == 0)
+        {
+            mx = max(mx, a[i]);
+      
+        }
+    }
+    int cur = 0;
+    for (int j = 0; j < n; ++j)
+    {
+            cur += (mx ^ a[j]);
+    }
+
+    cout << cur << endl;
 }
 
 main()

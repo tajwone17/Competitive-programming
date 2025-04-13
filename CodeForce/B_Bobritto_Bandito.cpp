@@ -34,11 +34,37 @@ using namespace std;
 //         base = (base * base) % M;
 //         exp >>= 1;
 //     }
-//     return res;
+//    return res;
 // }
 void tajwone17()
 {
-    
+    int n, m, l, r;
+    cin >> n >> m >> l >> r;
+    int k = n - m;
+    while (k > 0)
+    {
+        if (l > 0)
+        {
+            l--;
+            k--;
+        }
+        else if (l < 0)
+        {
+            l++;
+            k--;
+        }
+        else if (r > 0)
+        {
+            r--;
+            k--;
+        }
+        else if (r < 0)
+        {
+            r++;
+            k--;
+        }
+    }
+    cout << l << " " << r << endl;
 }
 
 main()

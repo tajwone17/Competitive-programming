@@ -38,7 +38,43 @@ using namespace std;
 // }
 void tajwone17()
 {
-    
+    int n, best = 0;
+    cin >> n;
+    vector<int> prefix(n + 1, 0);
+    vector<int> divisor;
+    vector<int> v(n);
+    for (int i = 0; i < n; i++)
+    {
+        cin >> v[i];
+    }
+
+    for (int i = 1; i * i <= n; i++)
+    {
+        if (n % i == 0)
+        {
+            divisor.push_back(i);
+            if ((long long)i * i != n)
+                divisor.push_back(n / i);
+        }
+    }
+    for (int i = 0; i < n; i++)
+    {
+        prefix[i + 1] = prefix[i] + v[i];
+    }
+
+    for (auto it : divisor)
+    {
+        int mn = LLONG_MAX, mx = LLONG_MIN;
+        for (int i = 0; i < n; i += it)
+        {
+            int sum = prefix[i + it] - prefix[i];
+            mn = min(mn, sum);
+            mx = max(mx, sum);
+        }
+        best = max(best, mx - mn);
+    }
+
+    cout << best << endl;
 }
 
 main()

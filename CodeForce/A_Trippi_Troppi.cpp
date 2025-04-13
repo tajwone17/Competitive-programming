@@ -38,7 +38,16 @@ using namespace std;
 // }
 void tajwone17()
 {
-    
+    string s;
+
+    getline(cin, s);
+    cout << s[0];
+    for (int i = 1; i < s.size(); i++)
+    {
+        if (s[i - 1] == ' ')
+            cout << s[i];
+    }
+    cout << endl;
 }
 
 main()
@@ -46,7 +55,7 @@ main()
     freePalestine;
     int t;
     cin >> t;
-    // cin.ignore();
+    cin.ignore();
     for (int i = 1; i <= t; i++)
     {
         // cout<<"Case #"<<i<<": ";

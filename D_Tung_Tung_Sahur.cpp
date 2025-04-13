@@ -38,7 +38,45 @@ using namespace std;
 // }
 void tajwone17()
 {
-    
+    string s, s1;
+    cin >> s >> s1;
+    vector<int> a, b;
+    if (s[0] != s1[0])
+    {
+        no;
+        return;
+    }
+    s = '.' + s;
+    s1 = '.' + s1;
+
+    for (int i = 1; i < s.size(); i++)
+    {
+        if (s[i] == s[i - 1])
+            a.back()++;
+        else
+            a.push_back(1);
+    }
+    for (int i = 1; i < s1.size(); i++)
+    {
+        if (s1[i] == s1[i - 1])
+            b.back()++;
+        else
+            b.push_back(1);
+    }
+    if (a.size() != b.size())
+    {
+        no;
+        return;
+    }
+    for (int i = 0; i < a.size(); i++)
+    {
+        if (b[i] < a[i] || 2 * a[i] < b[i])
+        {
+            no;
+            return;
+        }
+    }
+    yes;
 }
 
 main()

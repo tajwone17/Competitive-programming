@@ -38,7 +38,37 @@ using namespace std;
 // }
 void tajwone17()
 {
-    
+    int n;
+    cin >> n;
+    set<int> st;
+    for (int i = 1; i <= n * 2; i++)
+    {
+        st.insert(i);
+    }
+    vector<vector<int>> a(n, vector<int>(n));
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = 0; j < n; j++)
+        {
+            cin >> a[i][j];
+        }
+    }
+    vector<int> b(n * 2 + 1, 0);
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = 0; j < n; j++)
+        {
+            b[i + 1 + j + 1] = a[i][j];
+            st.erase(a[i][j]);
+        }
+    }
+    auto it = st.begin();
+    cout << *it << " ";
+    for (int i = 2; i < n * 2 + 1; i++)
+    {
+        cout << b[i] << " ";
+    }
+    cout << endl;
 }
 
 main()
