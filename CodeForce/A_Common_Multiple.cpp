@@ -36,22 +36,18 @@ using namespace std;
 //     }
 //     return res;
 // }
-
 void tajwone17()
 {
-    int n, ans1 = 1;
+    int n;
     cin >> n;
-    int ans2 = n - 1;
-    for (int i = 2; i <= sqrt(n); i++)
+    set<int> s;
+    for (int i = 0; i < n; i++)
     {
-        if (n % i == 0)
-        {
-            ans1 = n / i;
-            ans2 = n - ans1;
-            break;
-        }
+        int x;
+        cin >> x;
+        s.insert(x);
     }
-    cout << ans1 << " " << ans2 << endl;
+    cout << s.size() << endl;
 }
 
 main()
@@ -59,7 +55,7 @@ main()
     freePalestine;
     int t;
     cin >> t;
-
+    // cin.ignore();
     for (int i = 1; i <= t; i++)
     {
         // cout<<"Case #"<<i<<": ";

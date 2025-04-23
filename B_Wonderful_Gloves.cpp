@@ -36,22 +36,33 @@ using namespace std;
 //     }
 //     return res;
 // }
-
 void tajwone17()
 {
-    int n, ans1 = 1;
-    cin >> n;
-    int ans2 = n - 1;
-    for (int i = 2; i <= sqrt(n); i++)
+    int n,k,ans=0;
+    cin >> n >> k;
+    vector<int> a(n);
+    vector<int> b(n);
+    for (int i = 0; i < n; i++)
     {
-        if (n % i == 0)
-        {
-            ans1 = n / i;
-            ans2 = n - ans1;
-            break;
+        cin >> a[i];
+    }
+    for (int i = 0; i < n; i++)
+    {
+        cin >> b[i];
+    }
+    int sum1=accumulate(a.begin(), a.end(), 0);
+    int sum2=accumulate(b.begin(), b.end(), 0);
+    if(sum1>sum2){
+        sort(b);
+    }
+    else{
+        sort(a);
+    }
+    while(k>0){
+        if(sum1>sum2){
+            ans+=sum1+
         }
     }
-    cout << ans1 << " " << ans2 << endl;
 }
 
 main()
@@ -59,7 +70,7 @@ main()
     freePalestine;
     int t;
     cin >> t;
-
+    // cin.ignore();
     for (int i = 1; i <= t; i++)
     {
         // cout<<"Case #"<<i<<": ";
