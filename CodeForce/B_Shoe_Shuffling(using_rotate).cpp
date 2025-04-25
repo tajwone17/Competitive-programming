@@ -38,8 +38,45 @@ using namespace std;
 // }
 void tajwone17()
 {
- 
+    int n;
+    cin >> n;
+    vector<int> p(n);
+    int flag = 0, flagEven = 0;
+    vector<int> ans(n, 0);
+    map<int, int> mp;
+    for (int i = 0; i < n; i++)
+    {
+        cin >> p[i];
+        mp[p[i]]++;
+        ans[i] = i + 1;
+    }
+    for (auto it : mp)
+    {
+        if (it.second == 1)
+        {
+            cout << -1 << endl;
+            return;
+        }
+    }
 
+    int l = 0, r = 0;
+    while (r < n)
+    {
+        if (p[l] == p[r])
+            r++;
+        else
+        {
+            rotate(ans.begin() + l, ans.begin() + l + 1, ans.begin() + r);
+            l = r;
+        }
+    }
+    rotate(ans.begin() + l, ans.begin() + l + 1, ans.begin() + r);
+
+    for (auto it : ans)
+    {
+        cout << it << " ";
+    }
+    cout << endl;
 }
 
 main()
