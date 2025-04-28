@@ -7,8 +7,7 @@ using namespace std;
     cout.tie(0);
 #define int long long int
 #define all(n) for (int i = 0; i < (n); i++)
-#define sort(v) sort((v).begin(), (v).end())
-#define rsort(v) sort((v).rbegin(), (v).rend())
+
 #define endl "\n"
 #define no cout << "NO" << endl
 #define yes cout << "YES" << endl
@@ -38,6 +37,45 @@ using namespace std;
 // }
 void tajwone17()
 {
+    int n;
+    cin >> n;
+    vector<int> a(n);
+    vector<int> pre(n, 0);
+    all(n) cin >> a[i];
+
+    vector<int> ans(n + 1, 0);
+    pre[0] = a[0];
+    for (int i = 1; i < n; i++)
+    {
+        pre[i] = pre[i - 1] + a[i];
+    }
+    int k = 0;
+    vector<int> temp = a;
+    temp[0] = a[0];
+    for (int i = 1; i < n; i++)
+    {
+        if (temp[i - 1] < a[i])
+            temp[i] = a[i];
+        else
+            temp[i] = temp[i - 1];
+    }
+
+    for (int i = n - 1; i >= 0; i--)
+    {
+
+        ans[i] += pre[n - 1];
+        if (n - 1 - k >= 0)
+            ans[i] -= pre[n - 1 - k];
+
+        ans[i] += temp[n - 1 - k];
+        k++;
+    }
+    reverse(ans.begin(), ans.end());
+    for (int i = 1; i <= n; i++)
+    {
+        cout << ans[i] << " ";
+    }
+    cout << endl;
 }
 
 int32_t main()

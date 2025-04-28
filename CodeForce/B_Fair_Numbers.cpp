@@ -38,9 +38,33 @@ using namespace std;
 // }
 void tajwone17()
 {
+    int n;
+    cin >> n;
+    int ans = 0;
+    int m = n;
+    bool found = false;
+    while (!found)
+    {
+        found = true;
+        int m = n;
+        while (m > 0)
+        {
+            int digit = m % 10;
+            if (digit != 0 && n % digit != 0)
+            {
+                found = false;
+                break;
+            }
+            m /= 10;
+        }
+        if (found)
+            break;
+        n++;
+    }
+    cout << n << endl;
 }
 
-int32_t main()
+main()
 {
     freePalestine;
     int t;

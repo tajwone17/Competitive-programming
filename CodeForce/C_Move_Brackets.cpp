@@ -38,9 +38,35 @@ using namespace std;
 // }
 void tajwone17()
 {
+    int n;
+    cin >> n;
+    string s;
+    cin >> s;
+    stack<char> sto;
+    stack<char> stc;
+
+    for (int i = 0; i < n; i++)
+    {
+        if (s[i] == '(')
+        {
+            sto.push(s[i]);
+        }
+        else if (s[i] == ')')
+        {
+            if (!sto.empty())
+            {
+                sto.pop();
+            }
+            else
+            {
+                stc.push(s[i]);
+            }
+        }
+    }
+    cout << (sto.size() + stc.size()) / 2 << endl;
 }
 
-int32_t main()
+main()
 {
     freePalestine;
     int t;

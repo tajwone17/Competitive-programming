@@ -38,6 +38,25 @@ using namespace std;
 // }
 void tajwone17()
 {
+    int a, b, c;
+    cin >> a >> b >> c;
+    int sum = a + b + c;
+    int av = sum / 3;
+    if (sum % 3 != 0)
+    {
+        cout << "NO" << endl;
+        return;
+    }
+    if (av < a || av < b)
+    {
+        cout << "NO" << endl;
+        return;
+    }
+    else
+    {
+        cout << "YES" << endl;
+        return;
+    }
 }
 
 int32_t main()
