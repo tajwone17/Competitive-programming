@@ -39,30 +39,36 @@ using namespace std;
 void tajwone17()
 {
     int n, k;
+    int cntw = 0, cntb = 0;
     cin >> n >> k;
     string s;
     cin >> s;
-    int cnt = 0;
-    int longest = 0;
-    for (int i = 0; i < n - 1; i++)
+    for (int i = 0; i < k; i++)
     {
-        if (s[i] == 'B' && s[i + 1] == 'B')
-        {
-            cnt++;
-        }
-        else if (s[i] == 'B' && s[i + 1] == 'W')
-        {
-            if (cnt != 0)
-                longest = max(longest, cnt + 1);
-            cnt = 0;
-        }
+        if (s[i] == 'W')
+            cntw++;
     }
-    if (longest >= k)
-        cout << 0 << endl;
-    else
+    int left = 1, right = k;
+    int ans = LONG_MAX;
+    ans = min(cntw, ans);
+    while (right < n)
     {
-        cout << k - longest << endl;
+        if ((s[right] == 'W' && s[left - 1] == 'B'))
+        {
+            cntw++;
+        }
+        else if (s[right] == 'B' && s[left - 1] == 'W')
+            cntw--;
+
+        // if (s[right] == 'W' && right!=left )
+        //     cntw++;
+
+        ans = min(ans, cntw);
+
+        right++;
+        left++;
     }
+    cout << ans << endl;
 }
 
 int32_t main()

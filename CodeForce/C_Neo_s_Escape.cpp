@@ -39,24 +39,37 @@ void tajwone17()
     int n;
     cin >> n;
     vector<int> a(n);
+    vector<int> a_;
     vector<int> b(n, 0);
     for (int i = 0; i < n; i++)
     {
         cin >> a[i];
     }
-    vector<pair<int, int>> v;
+    int l = -1;
     for (int i = 0; i < n; i++)
     {
-        v.push_back({a[i], i});
+        if (a[i] != l)
+        {
+            a_.push_back(a[i]);
+        }
+        l = a[i];
     }
+    vector<pair<int, int>> v;
+    for (int i = 0; i < a_.size(); i++)
+    {
+
+        v.push_back({a_[i], i});
+    }
+
     sort(v.rbegin(), v.rend());
+
     b[v[0].second] = 1;
     if (v[0].second < n - 1)
         b[v[0].second + 1] = 1;
     if (v[0].second > 0)
         b[v[0].second - 1] = 1;
     int cnt = 1;
-    for (int i = 1; i < n; i++)
+    for (int i = 1; i < v.size(); i++)
     {
         if (b[v[i].second] == 1)
         {
@@ -65,7 +78,7 @@ void tajwone17()
             if (v[i].second > 0)
                 b[v[i].second - 1] = 1;
         }
-        else
+        else if (b[v[i].second] == 0)
         {
             b[v[i].second] = 1;
             if (v[i].second < n - 1)
