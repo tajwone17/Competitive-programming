@@ -40,28 +40,47 @@ void tajwone17()
     int n;
     cin >> n;
     vector<int> v(n);
-    vector<int> ans(n + 1);
-    vector<pair<int, int>> times;
+    vector<int> ans(n + 1, 0);
+    vector<pair<int, int>> times(n);
+    for (int i = 0; i < n; i++)
+    {
+        cin >> v[i];
+    }
     for (int i = 0; i < n; i++)
     {
         times[i].first = 2 * v[i];
         times[i].second = i;
     }
     sort(times.rbegin(), times.rend());
-    int total = n + 1;
-    ans[0] = total / 2;
-    int tmp = total / 2;
     vector<int> number(n + 1);
-        ans[0] = tmp;
+    int x = 0, y = 0, sum = 0;
+    number[0] = 0;
     for (int i = 1; i < n + 1; i++)
     {
-        if (i % 2 != 0)
+        if (i % 2 == 0)
         {
-            ans[i] = ans[i - 1]++;
+            number[i] = ++x;
         }
         else
-        ans[i]=ans[i-1]--;
+            number[i] = --y;
     }
+    for (int i = 0; i < times.size(); i++)
+    {
+
+        sum += times[i].first * abs(number[i + 1]);
+    }
+    cout << sum << endl;
+    ans[0] = 0;
+    for (int i = 0; i < times.size(); i++)
+    {
+
+        ans[times[i].second + 1] = number[i + 1];
+    }
+    for (int i = 0; i < ans.size(); ++i)
+    {
+        cout << ans[i] << " ";
+    }
+    cout << endl;
 }
 
 int32_t main()
