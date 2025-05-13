@@ -38,23 +38,20 @@ using namespace std;
 // }
 void tajwone17()
 {
-    int n;
+    int n, sz = 0, count = 0;
     cin >> n;
     string s;
     cin >> s;
     set<int> st;
-    vector<int> pre(n, 0);
+
     for (int i = 0; i < n; i++)
     {
         st.insert(s[i]);
-        pre[i] = st.size();
+        sz = st.size();
+        count += sz;
     }
-    for (int i = 0; i < n; i++)
-    {
-        
-    }
+    cout << count << endl;
 }
-
 int32_t main()
 {
     freePalestine;
