@@ -38,14 +38,32 @@ using namespace std;
 // }
 void tajwone17()
 {
-    int n,q;
+    int n, q;
     cin >> n >> q;
     vector<int> a(n);
-    vector<int>b(q);
+    vector<int> b(q);
     all(n) cin >> a[i];
     all(q) cin >> b[i];
-    
-     
+    int prev = 31;
+    for (int i = 0; i < q; i++)
+    {
+        if (b[i] >= prev)
+            continue;
+        for (int j = 0; j < n; j++)
+        {
+            int val = pow(2, b[i]);
+            if (a[j] % val == 0)
+            {
+                a[j] += val / 2;
+            }
+        }
+        prev = b[i];
+    }
+    for (int i = 0; i < n; i++)
+    {
+        cout << a[i] << " ";
+    }
+    cout << endl;
 }
 
 int32_t main()
