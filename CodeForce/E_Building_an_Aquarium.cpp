@@ -6,6 +6,7 @@ using namespace std;
     cin.tie(0);                   \
     cout.tie(0);
 #define int long long int
+
 #define endl "\n"
 #define no cout << "NO" << endl
 #define yes cout << "YES" << endl
@@ -35,9 +36,58 @@ using namespace std;
 // }
 void tajwone17()
 {
-     
-}
+    int n, x, ans = 0;
+    cin >> n >> x;
+    vector<int> a(n);
+    for (int i = 0; i < n; i++)
+    {
+        cin >> a[i];
+    }
+    int sum = 0;
+    sort(a.begin(), a.end());
+    for (int i = 0; i < n; i++)
+    {
+        sum += a[n - 1] - a[i];
+    }
+    if (sum == x)
+    {
+        cout << a[n - 1] << endl;
+        return;
+    }
+    if (sum > x)
+    {
+        int l = 0, r = a[n - 1] + x;
+        int mid = 0;
+        while (l <= r)
+        {
+            mid = (l + r) / 2;
+            int sum = 0;
+            for (int i = 0; i < n; i++)
+            {
 
+                if (a[i] < mid)
+                    sum += mid - a[i];
+            }
+
+            if (sum <= x)
+            {
+                ans = mid;
+                l = mid + 1;
+            }
+            else
+            {
+                r = mid - 1;
+            }
+        }
+        cout << ans << endl;
+    }
+    else if (sum < x)
+    {
+        int j = x - sum;
+        int ans = j / n;
+        cout << ans + a[n - 1] << endl;
+    }
+}
 int32_t main()
 {
     freePalestine;
