@@ -14,7 +14,7 @@ using namespace std;
 // int a[MAX];
 
 // const int M=998244353;
-// int mod(long long x){A
+// int mod(long long x){
 //     return ((x%M + M)%M);
 // }
 // int add(long long a, long long b){
@@ -35,7 +35,31 @@ using namespace std;
 // }
 void tajwone17()
 {
-     
+    int n, m, a, b, cnt = 0;
+    cin >> n >> m >> a >> b;
+    while (n > 1 || m > 1)
+    {
+        int r = max(a - 1, n - a)+1;
+        int c = max(b - 1, m - b)+1;
+        if (r >= c)
+        {
+            n = n - r;
+        }
+        else
+        {
+            m = m - c;
+        }
+        if (r >= c)
+        {
+            a = (r + 1) / 2;
+        }
+        else
+        {
+            b = (c + 1) / 2;
+        }
+        cnt++;
+    }
+    cout << cnt+1 << endl;
 }
 
 int32_t main()

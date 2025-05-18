@@ -35,7 +35,36 @@ using namespace std;
 // }
 void tajwone17()
 {
-     
+    int n, k, sum = 0;
+    cin >> n >> k;
+    vector<int> a(n);
+    for (int i = 0; i < n; i++)
+    {
+        cin >> a[i];
+    }
+    sort(a.begin(), a.end());
+    int l = 0, r = n - 1;
+    vector<int> pref(n);
+    pref[0] = a[0];
+    for (int i = 1; i < n; i++)
+    {
+        pref[i] = pref[i - 1] + a[i];
+    }
+    int first = 0, second = k;
+    while (first <= k)
+    {
+
+        int idx1 = 2 * first;
+
+        int idx2 = n - second - 1;
+
+        int sum1 = (pref[idx2] - (idx1 == 0 ? 0 : pref[idx1 - 1]));
+        sum = max(sum, sum1);
+        first++;
+        second--;
+    }
+
+    cout << sum << endl;
 }
 
 int32_t main()
