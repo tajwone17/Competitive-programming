@@ -35,7 +35,20 @@ using namespace std;
 // }
 void tajwone17()
 {
-   
+    int n;
+    cin >> n;
+    vector<int> a(n);
+    vector<int> b(n);
+    for (int i = 0; i < n; i++)
+    {
+        cin >> a[i];
+    }
+    for (int i = 0; i < n; i++)
+    {
+        cin >> b[i];
+    }
+    
+  
 }
 
 int32_t main()

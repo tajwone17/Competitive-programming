@@ -35,7 +35,25 @@ using namespace std;
 // }
 void tajwone17()
 {
-   
+    int n;
+    cin >> n;
+    string s;
+    cin >> s;
+    char first = s[0];
+    char last = s[n - 1];
+    set<char> st;
+    st.insert(first);
+    st.insert(last);
+    for (int i = 1; i < n - 1; i++)
+    {
+        if (st.count(s[i]))
+        {
+            yes;
+            return;
+        }
+        st.insert(s[i]);
+    }
+    no;
 }
 
 int32_t main()

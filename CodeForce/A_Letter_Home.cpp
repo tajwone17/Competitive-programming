@@ -35,7 +35,24 @@ using namespace std;
 // }
 void tajwone17()
 {
-   
+        int n, s;
+        cin >> n >> s;
+        vector<int> x(n);
+        for (int i = 0; i < n; ++i)
+            cin >> x[i];
+
+        int minPos = x[0];          
+        int maxPos = x[n - 1];
+
+      
+        int left = abs(s - minPos);
+        int right = abs(s - maxPos);
+
+
+        int totalSteps = (maxPos - minPos) + min(left, right);
+
+        cout << totalSteps << endl;
+
 }
 
 int32_t main()

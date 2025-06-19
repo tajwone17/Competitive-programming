@@ -35,7 +35,27 @@ using namespace std;
 // }
 void tajwone17()
 {
-   
+    int n, ans = 0;
+    ;
+    cin >> n;
+    vector<int> a(n);
+    for (int i = 0; i < n; i++)
+    {
+        cin >> a[i];
+    }
+    for (int i = 29; i >= 0; i--)
+    {
+        int cnt = 0;
+        for (int j = 0; j < n; j++)
+        {
+            if (a[j] >= pow(2, i) && a[j] < pow(2, i + 1))
+            {
+                cnt++;
+            }
+        }
+        ans += (cnt * (cnt - 1)) / 2;
+    }
+    cout << ans << endl;
 }
 
 int32_t main()
