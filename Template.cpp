@@ -9,12 +9,13 @@ using namespace std;
 #define endl "\n"
 #define no cout << "NO" << endl
 #define yes cout << "YES" << endl
+#define technologia return 0
 // const int N = 1e5 + 10;
 // const int MAX = 200'007;
 // int a[MAX];
 
 // const int M=998244353;
-// int mod(long long x){A
+// int mod(long long x){
 //     return ((x%M + M)%M);
 // }
 // int add(long long a, long long b){
@@ -49,4 +50,5 @@ int32_t main()
         // cout<<"Case #"<<i<<": ";
         tajwone17();
     }
+    technologia;
 }
