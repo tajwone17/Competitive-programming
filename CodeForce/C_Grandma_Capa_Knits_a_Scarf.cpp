@@ -14,7 +14,7 @@ using namespace std;
 // int a[MAX];
 
 // const int M=998244353;
-// int mod(long long x){A
+// int mod(long long x){
 //     return ((x%M + M)%M);
 // }
 // int add(long long a, long long b){
@@ -37,18 +37,49 @@ void tajwone17()
 {
     int n;
     cin >> n;
-    vector<int> a(n);
-    vector<int> b(n);
+    string s;
+    cin >> s;
+    bool isPossible = true;
+    int ans = INT_MAX;
+    int cnt;
+    set<char> st;
     for (int i = 0; i < n; i++)
     {
-        cin >> a[i];
+        st.insert(s[i]);
     }
-    for (int i = 0; i < n; i++)
+    for (auto c : st)
     {
-        cin >> b[i];
+        cnt = 0;
+        int l = 0, r = n - 1;
+        while (l <= r)
+        {
+            if (s[l] == s[r])
+            {
+                l++;
+                r--;
+            }
+            else if (s[l] == c)
+            {
+                l++;
+                cnt++;
+            }
+            else if (s[r] == c)
+            {
+                r--;
+                cnt++;
+            }
+            else
+            {
+                cnt = INT_MAX;
+                break;
+            }
+        }
+        ans = min(ans, cnt);
     }
-    
-  
+    if (ans == INT_MAX)
+        cout << -1 << endl;
+    else
+        cout << ans << endl;
 }
 
 int32_t main()
