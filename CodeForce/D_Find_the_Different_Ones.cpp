@@ -37,6 +37,44 @@ using namespace std;
 // }
 void tajwone17()
 {
+    int n;
+    cin >> n;
+    vector<int> a(n);
+    for (int i = 0; i < n; i++)
+    {
+        cin >> a[i];
+    }
+    int q;
+    cin >> q;
+
+    map<int, int> pref_map;
+    int prv = -1;
+    pref_map[0] = -1;
+    for (int i = 1; i < n; i++)
+    {
+        if (a[i] != a[i - 1])
+        {
+            prv = i - 1;
+        }
+        pref_map[i] = prv;
+    }
+    while (q--)
+    {
+
+        int i, j;
+        cin >> i >> j;
+        i--;
+        j--;
+        if (pref_map[j] < i)
+        {
+            cout << -1 << " " << -1 << endl;
+        }
+        else
+        {
+            cout << pref_map[j] + 1 << " " << j + 1 << endl;
+        }
+    }
+    cout << endl;
 }
 
 int32_t main()

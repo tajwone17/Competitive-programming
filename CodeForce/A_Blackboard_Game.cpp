@@ -9,7 +9,6 @@ using namespace std;
 #define endl "\n"
 #define no cout << "NO" << endl
 #define yes cout << "YES" << endl
-#define technologia return 0
 
 // const int N = 1e5 + 10;
 // const int MAX = 200'007;
@@ -37,6 +36,12 @@ using namespace std;
 // }
 void tajwone17()
 {
+    int n;
+    cin >> n;
+   if (n % 4 == 0)
+            cout << "Bob" << endl;
+        else
+            cout << "Alice" << endl;
 }
 
 int32_t main()
@@ -50,5 +55,4 @@ int32_t main()
         // cout<<"Case #"<<i<<": ";
         tajwone17();
     }
-    technologia;
 }

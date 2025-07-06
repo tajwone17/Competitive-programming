@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 #define freePalestine             \
@@ -35,8 +36,25 @@ using namespace std;
 //     }
 //     return res;
 // }
+int lcm(int a, int b)
+{
+    return (a / __gcd(a, b)) * b;
+}
 void tajwone17()
 {
+    int n, x, y;
+    cin >> n >> x >> y;
+    set<int> st;
+    int lc = lcm(x, y);
+    int common_multiple = n / lc;
+    int first = (n / x) - common_multiple;
+    int last = (n / y) - common_multiple;
+
+    int firstSum = 0, lastSum = 0;
+    lastSum = (last * (last + 1)) / 2;
+   firstSum = (first * (2 * n - (first - 1))) / 2;
+
+    cout << firstSum - lastSum << endl;
 }
 
 int32_t main()

@@ -37,6 +37,28 @@ using namespace std;
 // }
 void tajwone17()
 {
+    int a, b, x, y;
+    cin >> a >> b >> x >> y;
+
+    if (a == b) {
+        cout << 0 << endl;
+    } else if (a > b) {
+      
+        if ((a & 1) && b == a - 1)
+            cout << y << endl;
+        else
+            cout << -1 << endl;
+    } else {
+        int cost = 0;
+        for (int i = a; i < b; ++i) {
+           
+            if (i & 1)
+                cost += x;
+            else
+                cost += min(x, y);
+        }
+        cout << cost << endl;
+    }
 }
 
 int32_t main()

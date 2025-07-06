@@ -9,7 +9,6 @@ using namespace std;
 #define endl "\n"
 #define no cout << "NO" << endl
 #define yes cout << "YES" << endl
-#define technologia return 0
 
 // const int N = 1e5 + 10;
 // const int MAX = 200'007;
@@ -37,6 +36,41 @@ using namespace std;
 // }
 void tajwone17()
 {
+    int n;
+    cin >> n;
+    vector<int> a(n);
+    for (int i = 0; i < n; i++)
+    {
+        cin >> a[i];
+    }
+
+    int l = 1, r = n - 1;
+    vector<int> ans(n, 0);
+    ans[0] = 1;
+    ans[n - 1] = 1;
+    int mn = a[0];
+    for (int i = 0; i < n - 1; i++)
+    {
+        if (mn > a[i + 1])
+        {
+            ans[i + 1] = 1;
+            mn = a[i + 1];
+        }
+    }
+    int mx = a[n - 1];
+    for (int i = n - 1; i >= 1; i--)
+    {
+        if (mx < a[i - 1])
+        {
+            ans[i - 1] = 1;
+            mx = a[i - 1];
+        }
+    }
+    for (int i = 0; i < n; i++)
+    {
+        cout << ans[i];
+    }
+    cout << endl;
 }
 
 int32_t main()
@@ -50,5 +84,4 @@ int32_t main()
         // cout<<"Case #"<<i<<": ";
         tajwone17();
     }
-    technologia;
 }

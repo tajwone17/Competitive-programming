@@ -9,7 +9,6 @@ using namespace std;
 #define endl "\n"
 #define no cout << "NO" << endl
 #define yes cout << "YES" << endl
-#define technologia return 0
 
 // const int N = 1e5 + 10;
 // const int MAX = 200'007;
@@ -37,8 +36,26 @@ using namespace std;
 // }
 void tajwone17()
 {
+    int n, j, k;
+    cin >> n >> j >> k;
+    vector<int> a(n);
+    for (int i = 0; i < n; i++)
+    {
+        cin >> a[i];
+    }
+    int mx = *max_element(a.begin(), a.end());
+    if (a[j - 1] == mx)
+    {
+        yes;
+        return;
+    }
+    if (k == 1)
+    {
+        no;
+        return;
+    }
+    yes;
 }
-
 int32_t main()
 {
     freePalestine;
@@ -50,5 +67,4 @@ int32_t main()
         // cout<<"Case #"<<i<<": ";
         tajwone17();
     }
-    technologia;
 }

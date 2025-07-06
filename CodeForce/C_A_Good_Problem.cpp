@@ -37,6 +37,28 @@ using namespace std;
 // }
 void tajwone17()
 {
+    int n, l, r, k;
+    cin >> n >> l >> r >> k;
+    int next = (1ll << (int)(log2(l) + 1));
+    
+    if ((n % 2 == 0 && next > r) || n == 2)
+    {
+        cout << -1 << endl;
+        return;
+    }
+    if (n % 2 == 1)
+    {
+        cout << l << endl;
+    }
+    else
+    {
+        if (n - 2 < k)
+        {
+            cout << next << endl;
+        }
+        else
+            cout << l << endl;
+    }
 }
 
 int32_t main()

@@ -1,3 +1,4 @@
+
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -9,7 +10,6 @@ using namespace std;
 #define endl "\n"
 #define no cout << "NO" << endl
 #define yes cout << "YES" << endl
-#define technologia return 0
 
 // const int N = 1e5 + 10;
 // const int MAX = 200'007;
@@ -35,8 +35,57 @@ using namespace std;
 //     }
 //     return res;
 // }
+
 void tajwone17()
 {
+    int n;
+    int k;
+    cin >> n >> k;
+    string s;
+    cin >> s;
+
+    int ones = 0;
+    for (char c : s)
+    {
+        if (c == '1')
+        {
+            ones++;
+        }
+    }
+
+    if (ones <= k)
+    {
+        cout << "Alice" << endl;
+        return;
+    }
+
+    bool has_k_zeros = false;
+    int consZero = 0;
+    for (int i = 0; i < n; ++i)
+    {
+        if (s[i] == '0')
+        {
+            consZero++;
+        }
+        else
+        {
+            consZero = 0;
+        }
+        if (consZero >= k)
+        {
+            has_k_zeros = true;
+            break;
+        }
+    }
+
+    if (has_k_zeros || (2 * k <= n))
+    {
+        cout << "Bob" << endl;
+    }
+    else
+    {
+        cout << "Alice" << endl;
+    }
 }
 
 int32_t main()
@@ -50,5 +99,4 @@ int32_t main()
         // cout<<"Case #"<<i<<": ";
         tajwone17();
     }
-    technologia;
 }
