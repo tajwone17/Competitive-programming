@@ -37,8 +37,35 @@ using namespace std;
 // }
 void tajwone17()
 {
-    
-       
+
+    int n, k;
+    cin >> n >> k;
+    int ans = 0;
+    map<int, int> mp;
+    for (int i = 0; i < n; i++)
+    {
+        int x;
+        cin >> x;
+        for (int i = 0; i < 31; i++)
+        {
+            if (x & 1)
+            {
+                mp[i]++;
+                
+            }
+            x = (x >> 1);
+        }
+    }
+    for (int i = 30; i >= 0; i--)
+    {
+        int cnt = n - mp[i];
+        if (cnt <= k)
+        {
+            ans += pow(2, i);
+            k -= cnt;
+        }
+    }
+    cout << ans << endl;
 }
 
 int32_t main()

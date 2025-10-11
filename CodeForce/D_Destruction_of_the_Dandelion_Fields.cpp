@@ -5,7 +5,7 @@ using namespace std;
     ios_base::sync_with_stdio(0); \
     cin.tie(0);                   \
     cout.tie(0);
-#define int long long int
+#define int long long
 #define endl "\n"
 #define no cout << "NO" << endl
 #define yes cout << "YES" << endl
@@ -16,13 +16,13 @@ using namespace std;
 // int a[MAX];
 
 // const int M=998244353;
-// int mod(long long x){
+// int mod(int x){
 //     return ((x%M + M)%M);
 // }
-// int add(long long a, long long b){
+// int add(int a, int b){
 //     return mod(mod(a)+mod(b));
 // }
-// int mul(long long a, long long b){
+// int mul(int a, int b){
 //     return mod(mod(a)*mod(b));
 // }
 // int mod_pow(int base, int exp) {
@@ -37,8 +37,33 @@ using namespace std;
 // }
 void tajwone17()
 {
-    
-       
+    int n;
+    cin >> n;
+    vector<int> odd, even;
+    for (int i = 0; i < n; i++)
+    {
+        int x;
+        cin >> x;
+        if (x % 2 == 0)
+            even.push_back(x);
+        else
+            odd.push_back(x);
+    }
+
+    if (odd.empty())
+    {
+        cout << 0 << endl;
+        return;
+    }
+
+    sort(odd.begin(), odd.end());
+
+    int even_sum = accumulate(even.begin(), even.end(), 0LL);
+
+    int toal = even_sum;
+    for (int i = odd.size() / 2; i < odd.size(); i++)
+        toal += odd[i];
+    cout << toal << endl;
 }
 
 int32_t main()

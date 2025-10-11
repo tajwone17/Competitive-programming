@@ -37,8 +37,22 @@ using namespace std;
 // }
 void tajwone17()
 {
-    
-       
+    int n, a, b;
+    cin >> n >> a >> b;
+    if (b >= a)
+    {
+        if ((n - b) % 2)
+            no;
+        else
+            yes;
+        return;
+    }
+    if ((n - a) % 2 == 0 && (n - b) % 2 == 0)
+    {
+        yes;
+        return;
+    }
+    no;
 }
 
 int32_t main()

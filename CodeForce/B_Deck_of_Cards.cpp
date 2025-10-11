@@ -37,8 +37,47 @@ using namespace std;
 // }
 void tajwone17()
 {
-    
-       
+    int n, k;
+    cin >> n >> k;
+    string s;
+    cin >> s;
+    if (n == k)
+    {
+        for (int i = 0; i < n; i++)
+        {
+            cout << '-';
+        }
+        cout << endl;
+        return;
+    }
+    int cntTop = 0, cntBottom = 0, cntBoth = 0;
+    for (char c : s)
+    {
+        if (c == '0')
+            cntTop++;
+        else if (c == '1')
+            cntBottom++;
+        else
+            cntBoth++;
+    }
+
+    string result(n, '+');
+
+    for (int i = 0; i < cntTop; i++)
+        result[i] = '-';
+
+    for (int i = 0; i < cntBottom; i++)
+        result[n - 1 - i] = '-';
+
+    int left = cntTop;
+    int right = n - cntBottom - 1;
+    while (left <= right && cntBoth > 0)
+    {
+        result[left++] = '?';
+        result[right--] = '?';
+        cntBoth--;
+    }
+    cout << result << "\n";
 }
 
 int32_t main()

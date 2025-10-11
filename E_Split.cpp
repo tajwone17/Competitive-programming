@@ -37,8 +37,43 @@ using namespace std;
 // }
 void tajwone17()
 {
-    
-       
+    int n, k;
+    cin >> n >> k;
+    vector<int> a(n);
+    for (int i = 0; i < n; i++)
+        cin >> a[i];
+    unordered_map<int, int> total_count;
+    for (int num : a)
+        total_count[num]++;
+
+    unordered_map<int, int> max_allowed;
+    for (auto &p : total_count)
+    {
+        max_allowed[p.first] = p.second / k;
+        if ((p.second % k) != 0)
+        {
+            cout << 0 << endl;
+            return;
+        }
+    }
+
+    unordered_map<int, int> freq;
+    int left = 0;
+    int ans = 0;
+
+    for (int right = 0; right < n; right++)
+    {
+        freq[a[right]]++;
+
+        while (freq[a[right]] > max_allowed[a[right]])
+        {
+            freq[a[left]]--;
+            left++;
+        }
+
+        ans += right - left + 1;
+    }
+    cout << ans << endl;
 }
 
 int32_t main()

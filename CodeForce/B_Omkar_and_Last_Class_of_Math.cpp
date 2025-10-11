@@ -35,10 +35,22 @@ using namespace std;
 //     }
 //     return res;
 // }
+
 void tajwone17()
 {
-    
-       
+    int n;
+    cin >> n;
+
+    for (int i = 2; i * i <= n; i++)
+    {
+        if (n % i == 0)
+        {
+            int k = n / i;
+            cout << k << " " << n - k << endl;
+            return;
+        }
+    }
+    cout << 1 << " " << n - 1 << endl;
 }
 
 int32_t main()

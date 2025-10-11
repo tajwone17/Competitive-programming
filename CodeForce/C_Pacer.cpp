@@ -5,7 +5,7 @@ using namespace std;
     ios_base::sync_with_stdio(0); \
     cin.tie(0);                   \
     cout.tie(0);
-#define int long long int
+#define int long long
 #define endl "\n"
 #define no cout << "NO" << endl
 #define yes cout << "YES" << endl
@@ -16,13 +16,13 @@ using namespace std;
 // int a[MAX];
 
 // const int M=998244353;
-// int mod(long long x){
+// int mod(int x){
 //     return ((x%M + M)%M);
 // }
-// int add(long long a, long long b){
+// int add(int a, int b){
 //     return mod(mod(a)+mod(b));
 // }
-// int mul(long long a, long long b){
+// int mul(int a, int b){
 //     return mod(mod(a)*mod(b));
 // }
 // int mod_pow(int base, int exp) {
@@ -37,8 +37,44 @@ using namespace std;
 // }
 void tajwone17()
 {
-    
-       
+    int n, m;
+    cin >> n >> m;
+
+    vector<pair<int, int>> r(n);
+    for (int i = 0; i < n; ++i)
+    {
+        cin >> r[i].first >> r[i].second;
+    }
+
+    int ans = 0;
+    int ct = 0;
+    int cs = 0;
+
+    for (int i = 0; i < n; ++i)
+    {
+        int nt = r[i].first;
+        int ns = r[i].second;
+
+        int time = nt - ct;
+
+        if ((cs + time) % 2 == ns)
+        {
+
+            ans += time;
+        }
+        else
+        {
+
+            ans += (time - 1);
+        }
+
+        ct = nt;
+        cs = ns;
+    }
+
+    ans += (m - ct);
+
+    cout << ans << endl;
 }
 
 int32_t main()

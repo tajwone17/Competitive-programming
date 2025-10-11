@@ -37,8 +37,33 @@ using namespace std;
 // }
 void tajwone17()
 {
-    
-       
+    int n;
+    cin >> n;
+
+    vector<pair<int, int>> maxSokti(n);
+    for (int i = 0; i < n; i++)
+    {
+        int m;
+        cin >> m;
+        vector<int> a(m);
+        for (int j = 0; j < m; j++)
+        {
+            int x;
+            cin >> x;
+            a[j] = x - j + 1;
+        }
+        sort(a.begin(), a.end());
+        maxSokti[i] = {a[m - 1], m};
+    }
+    sort(maxSokti.begin(), maxSokti.end());
+    int ans = maxSokti[0].first;
+    int SoktiBarse = maxSokti[0].second;
+    for (int i = 1; i < n; i++)
+    {
+        ans = max(ans, maxSokti[i].first - SoktiBarse);
+        SoktiBarse += maxSokti[i].second;
+    }
+    cout << ans << endl;
 }
 
 int32_t main()

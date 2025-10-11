@@ -37,10 +37,22 @@ using namespace std;
 // }
 void tajwone17()
 {
-    
-       
-}
+    int n, a, b;
+    cin >> n >> a >> b;
 
+    bool flag = true;
+    if (b > a && n > a)
+        flag = false;
+    if (a == b)
+    {
+        if (n % (a + 1) == 0)
+            flag = false;
+    }
+    if (flag)
+        cout << "Alice" << endl;
+    else
+        cout << "Bob" << endl;
+}
 int32_t main()
 {
     freePalestine;

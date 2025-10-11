@@ -37,20 +37,38 @@ using namespace std;
 // }
 void tajwone17()
 {
-    
-       
+    int n;
+    cin >> n;
+
+    if (n % 2 == 0)
+    {
+        int dot=1,times=1;
+        
+        for(int i=2;i<=n;i+=2){
+            dot++;
+            times++;
+        }
+        int ans=dot*times;
+        cout << ans << endl;
+        return;
+    }
+    int dot = 2, times = 1;
+    for (int i = 3; i <= n; i++)
+    {
+        if (i % 2 == 1)
+        {
+            times++;
+            dot++;
+        }
+    }
+    cout << dot * times * 2 << endl;
 }
 
 int32_t main()
 {
     freePalestine;
-    int t;
-    cin >> t;
-    // cin.ignore();
-    for (int i = 1; i <= t; i++)
-    {
-        // cout<<"Case #"<<i<<": ";
-        tajwone17();
-    }
+
+    tajwone17();
+
     technologia;
 }

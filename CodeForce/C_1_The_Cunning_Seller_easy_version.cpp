@@ -35,22 +35,46 @@ using namespace std;
 //     }
 //     return res;
 // }
-void tajwone17()
+void tajwone17(vector<pair<int, int>> &deals)
 {
-    
-       
+    int n;
+    cin >> n;
+    int remaining = n;
+    int coin = 0;
+
+    for (int i = deals.size() - 1; i >= 0; i--)
+    {
+        int cnt = remaining / deals[i].first;
+        if (cnt > 0)
+        {
+            coin += cnt * deals[i].second;
+            remaining -= cnt * deals[i].first;
+        }
+    }
+
+    cout << coin << endl;
 }
 
 int32_t main()
 {
     freePalestine;
+
+    vector<pair<int, int>> deals;
+    for (int x = 0;; x++)
+    {
+        int wm = pow(3, x);
+        if (wm > 1e9)
+            break;
+        int cost = pow(3, x + 1) + x * pow(3, x - 1);
+        deals.push_back({wm, cost});
+    }
+
     int t;
     cin >> t;
-    // cin.ignore();
-    for (int i = 1; i <= t; i++)
+    while (t--)
     {
-        // cout<<"Case #"<<i<<": ";
-        tajwone17();
+        tajwone17(deals);
     }
+
     technologia;
 }

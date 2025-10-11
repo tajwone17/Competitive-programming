@@ -37,8 +37,12 @@ using namespace std;
 // }
 void tajwone17()
 {
-    
-       
+       int n;
+        cin >> n;
+
+        int remainder = n % 3;
+        int need = (3 - remainder) % 3; 
+        cout << need << endl;
 }
 
 int32_t main()

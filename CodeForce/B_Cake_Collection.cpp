@@ -37,8 +37,23 @@ using namespace std;
 // }
 void tajwone17()
 {
-    
-       
+    int n, m;
+    cin >> n >> m;
+    vector<int> a(n);
+    int ans = 0;
+    vector<int> tmp(n);
+    for (int i = 0; i < n; i++)
+    {
+        cin >> a[i];
+    }
+    sort(a.rbegin(), a.rend());
+
+    for (int i = 0; i < min(n, m); i++)
+    {
+        ans += a[i] * (m - i);
+    }
+
+    cout << ans << endl;
 }
 
 int32_t main()

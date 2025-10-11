@@ -37,8 +37,44 @@ using namespace std;
 // }
 void tajwone17()
 {
-    
-       
+
+    int n;
+    string s;
+    cin >> n >> s;
+
+    int A = count(s.begin(), s.end(), 'a');
+    int B = n - A;
+    int target = A - B;
+    vector<int> diff(n + 1, 0);
+    if (target == 0)
+    {
+        cout << 0 << endl;
+        return;
+    }
+    for (int i = 1; i <= n; i++)
+    {
+        diff[i] = diff[i - 1] + (s[i - 1] == 'a' ? 1 : -1);
+    }
+    map<int, int> mp;
+    mp[0] = 0;
+    int ans = n + 1;
+    for (int i = 1; i <= n; i++)
+    {
+        int need = diff[i] - target;
+        if (mp.find(need) != mp.end())
+        {
+            int len = i - mp[need];
+
+            ans = min(ans, len);
+        }
+        mp[diff[i]] = i;
+    }
+    if (ans == n)
+        cout << -1 << endl;
+    else if (ans == n + 1)
+        cout << n << endl;
+    else
+        cout << ans << endl;
 }
 
 int32_t main()

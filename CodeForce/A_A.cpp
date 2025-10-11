@@ -37,8 +37,24 @@ using namespace std;
 // }
 void tajwone17()
 {
-    
-       
+    int X, Y;
+    cin >> X >> Y;
+
+    int chocolate = 2 * X;
+    int candy = 5 * Y;
+
+    if (chocolate > candy)
+    {
+        cout << "Chocolate" << endl;
+    }
+    else if (candy > chocolate)
+    {
+        cout << "Candy" << endl;
+    }
+    else
+    {
+        cout << "Either" << endl;
+    }
 }
 
 int32_t main()

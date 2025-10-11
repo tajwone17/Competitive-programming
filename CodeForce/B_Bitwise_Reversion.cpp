@@ -37,8 +37,32 @@ using namespace std;
 // }
 void tajwone17()
 {
-    
-       
+    int x, y, z;
+    cin >> x >> y >> z;
+
+    bool ok = true;
+
+    for (int i = 0; i < 31; ++i)
+    {
+        int X = (x >> i) & 1;
+        int Y = (y >> i) & 1;
+        int Z = (z >> i) & 1;
+
+        if (!(
+                (X == 0 && Y == 0 && Z == 0) ||
+                (X == 0 && Y == 1 && Z == 0) ||
+                (X == 0 && Y == 0 && Z == 1) ||
+                (X == 1 && Y == 0 && Z == 0) ||
+                (X == 1 && Y == 1 && Z == 1)))
+        {
+            ok = false;
+            break;
+        }
+    }
+    if (ok)
+        yes;
+    else
+        no;
 }
 
 int32_t main()

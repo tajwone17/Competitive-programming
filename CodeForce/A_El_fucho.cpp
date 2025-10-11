@@ -37,20 +37,19 @@ using namespace std;
 // }
 void tajwone17()
 {
-    
-       
+   int n;
+   cin>>n;
+   int ans=(2*n)-2;
+   cout<<ans<<endl;
 }
 
 int32_t main()
 {
     freePalestine;
-    int t;
-    cin >> t;
-    // cin.ignore();
-    for (int i = 1; i <= t; i++)
-    {
-        // cout<<"Case #"<<i<<": ";
-        tajwone17();
-    }
+int t;
+cin>>t;
+while(t--){
+    tajwone17();
+}
     technologia;
 }

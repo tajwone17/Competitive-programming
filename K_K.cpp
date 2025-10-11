@@ -37,20 +37,25 @@ using namespace std;
 // }
 void tajwone17()
 {
-    
-       
+    string s;
+    cin >> s;
+    string s1 = s + s;
+    string rev = s;
+    reverse(rev.begin(), rev.end());
+
+    if (s1.find(rev) != string::npos)
+        cout << 1 << endl;
+    else
+        cout << 0 << endl;
 }
 
 int32_t main()
 {
     freePalestine;
-    int t;
-    cin >> t;
+
     // cin.ignore();
-    for (int i = 1; i <= t; i++)
-    {
-        // cout<<"Case #"<<i<<": ";
-        tajwone17();
-    }
+
+    tajwone17();
+
     technologia;
 }

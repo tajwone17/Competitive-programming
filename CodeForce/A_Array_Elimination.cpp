@@ -37,8 +37,54 @@ using namespace std;
 // }
 void tajwone17()
 {
-    
-       
+    int n, gcd = 0;
+    map<int, int> mp;
+    cin >> n;
+    for (int i = 0; i < n; i++)
+    {
+        int x;
+        cin >> x;
+        for (int j = 0; j < 31; j++)
+        {
+            if (x & 1)
+            {
+                mp[j]++;
+            }
+            x = (x >> 1);
+        }
+    }
+    bool flag = false;
+    for (auto it : mp)
+    {
+        flag = true;
+        if (gcd == 0)
+            gcd = it.second;
+        else
+            gcd = __gcd(gcd, it.second);
+    }
+    if (!flag)
+    {
+        for (int i = 1; i <= n; i++)
+        {
+            cout << i << " ";
+        }
+        cout << endl;
+        return;
+    }
+    vector<int> res;
+    for (int i = 1; i * i <= gcd; i++)
+    {
+        if (gcd % i == 0)
+        {
+            res.push_back(i);
+            if (i != gcd / i)
+                res.push_back(gcd / i);
+        }
+    }
+    sort(res.begin(), res.end());
+    for (auto x : res)
+        cout << x << " ";
+    cout << endl;
 }
 
 int32_t main()

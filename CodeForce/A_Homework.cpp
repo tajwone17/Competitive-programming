@@ -37,8 +37,22 @@ using namespace std;
 // }
 void tajwone17()
 {
-    
-       
+    int n;
+    cin >> n;
+    string s;
+    cin >> s;
+    int m;
+    cin >> m;
+    string a, b;
+    cin >> a >> b;
+    for (int i = 0; i < m; i++)
+    {
+        if (b[i] == 'V')
+            s.insert(s.begin(), a[i]);
+        else
+            s.push_back(a[i]);
+    }
+    cout << s << endl;
 }
 
 int32_t main()

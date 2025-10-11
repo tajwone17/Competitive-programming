@@ -37,8 +37,9 @@ using namespace std;
 // }
 void tajwone17()
 {
+   int n,rk,ck,rd,cd;
+    cin>>n>>rk>>ck>>rd>>cd;
     
-       
 }
 
 int32_t main()

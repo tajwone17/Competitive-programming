@@ -37,8 +37,26 @@ using namespace std;
 // }
 void tajwone17()
 {
-    
-       
+    int n;
+    cin >> n;
+    string s;
+    cin >> s;
+
+    int ones = count(s.begin(), s.end(), '1');
+    int wrong = 0;
+
+    for (int i = 0; i < n - ones; i++)
+    {
+        if (s[i] == '1')
+            wrong++;
+    }
+
+    for (int i = n - ones; i < n; i++)
+    {
+        if (s[i] == '0')
+            wrong++;
+    }
+    cout << wrong / 2 << endl;
 }
 
 int32_t main()

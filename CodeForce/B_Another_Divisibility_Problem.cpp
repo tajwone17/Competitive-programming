@@ -35,17 +35,32 @@ using namespace std;
 //     }
 //     return res;
 // }
-void tajwone17()
+
+int countDigits(int n)
 {
-    
-       
+    int digits = 0;
+    while (n > 0)
+    {
+        digits++;
+        n /= 10;
+    }
+    return digits;
 }
 
+void tajwone17()
+{
+    int x;
+    cin >> x;
+int y=x*2;
+    
+    cout << y << endl;
+}
 int32_t main()
 {
     freePalestine;
     int t;
     cin >> t;
+
     // cin.ignore();
     for (int i = 1; i <= t; i++)
     {

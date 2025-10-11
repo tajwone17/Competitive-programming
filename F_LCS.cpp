@@ -35,22 +35,29 @@ using namespace std;
 //     }
 //     return res;
 // }
+string s1, s2;
+int lcs(int i, int j)
+{
+    if (i < 0 || j < 0)
+        return 0;
+    int ans = lcs(i - 1, j);
+    ans = max(ans, lcs(i, j - 1));
+    ans = max(ans, lcs(i - 1, j - 1) + (s1[i] == s2[j]));
+    return ans;
+}
 void tajwone17()
 {
-    
-       
+
+    cin >> s1 >> s2;
+    cout << lcs(s1.size() - 1, s2.size() - 1) << endl;
 }
 
 int32_t main()
 {
     freePalestine;
-    int t;
-    cin >> t;
-    // cin.ignore();
-    for (int i = 1; i <= t; i++)
-    {
-        // cout<<"Case #"<<i<<": ";
-        tajwone17();
-    }
+
+    // cout<<"Case #"<<i<<": ";
+    tajwone17();
+
     technologia;
 }
