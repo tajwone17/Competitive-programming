@@ -35,28 +35,68 @@ using namespace std;
 //     }
 //     return res;
 // }
-int frog(vector<int> &v, int i, vector<int> &dp)
+const int N = 1e5 + 10;
+
+vector<int> g[N];
+vector<int> c(N);
+vector<int> ans;
+void dfs(int v)
 {
-    if (i == 0)
-        return 0;
-        if(dp[i]!=-1)return dp[i];
-    int left = frog(v, i - 1, dp) + abs(v[i] - v[i - 1]);
-    int right = INT_MAX;
-    if(i>1)
-    right = frog(v, i - 2, dp) + abs(v[i] - v[i - 2]);
-    return dp[i]=min(left, right);
+    int flag = 0;
+    // take action on vertex before entering the vertex
+    if (c[v] == 0)
+    {
+        flag = 1;
+    }
+
+    for (auto child : g[v])
+    {
+
+        // take action on child before entering the child node
+
+        dfs(child);
+        if (c[child] == 0)
+            flag = 1;
+
+        // take action on child after exiting the child node
+    }
+    if (!flag)
+    {
+        ans.push_back(v);
+    }
+
+    // take action on vertex before exiting the vertex
 }
 void tajwone17()
 {
     int n;
     cin >> n;
-    vector<int> v(n);
-    vector<int> dp(n, -1);
+    int root = -1;
     for (int i = 0; i < n; i++)
     {
-        cin >> v[i];
+        int x, y;
+        cin >> x >> y;
+        c[i + 1] = y;
+
+        if (x == -1)
+        {
+            root = i + 1;
+        }
+        else
+            g[x].push_back(i + 1);
     }
-    cout << frog(v, n - 1, dp) << endl;
+    dfs(root);
+    if (ans.empty())
+    {
+        cout << -1 << endl;
+        return;
+    }
+    sort(ans.begin(), ans.end());
+    for (auto u : ans)
+    {
+        cout << u << " ";
+    }
+    cout << endl;
 }
 
 int32_t main()

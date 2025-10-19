@@ -42,7 +42,6 @@ int frog(vector<int> &v, int i, vector<int> &dp, int k)
     if (dp[i] != -1)
         return dp[i];
     int cost = INT_MAX;
-
     for (int j = 1; j <= k; j++)
     {
         if (i - j >= 0)

@@ -35,28 +35,48 @@ using namespace std;
 //     }
 //     return res;
 // }
-int frog(vector<int> &v, int i, vector<int> &dp)
+const int MOD = 1000000007;
+int sol(int n, int k, vector<vector<int>> &factors, vector<vector<int>> &dp, int i, int j)
 {
-    if (i == 0)
-        return 0;
-        if(dp[i]!=-1)return dp[i];
-    int left = frog(v, i - 1, dp) + abs(v[i] - v[i - 1]);
-    int right = INT_MAX;
-    if(i>1)
-    right = frog(v, i - 2, dp) + abs(v[i] - v[i - 2]);
-    return dp[i]=min(left, right);
+    if (i == 1)
+        dp[i][j] = 1;
+    if (dp[i][j] != 0)
+        return dp[i][j];
+
+    int res = 0;
+    for (int factor : factors[j])
+    {
+        res = (res + sol(n, k, factors, dp, i - 1, factor)) % MOD;
+    }
+    dp[i][j] = res;
+    return dp[i][j];
 }
 void tajwone17()
 {
-    int n;
-    cin >> n;
-    vector<int> v(n);
-    vector<int> dp(n, -1);
-    for (int i = 0; i < n; i++)
+    int n, k;
+    cin >> n >> k;
+
+    vector<vector<int>> factors(n + 1);
+    for (int i = 1; i <= n; i++)
     {
-        cin >> v[i];
+        for (int j = 1; j * j <= i; j++)
+        {
+            if (i % j == 0)
+            {
+                factors[i].push_back(j);
+                if (j != i / j)
+                    factors[i].push_back(i / j);
+            }
+        }
     }
-    cout << frog(v, n - 1, dp) << endl;
+    vector<vector<int>> dp(k + 1, vector<int>(n + 1, 0));
+
+    int ans = 0;
+    for (int i = 1; i <= n; i++)
+    {
+        ans = (ans + sol(n, k, factors, dp, k, i)) % MOD;
+    }
+    cout << ans << endl;
 }
 
 int32_t main()

@@ -35,8 +35,48 @@ using namespace std;
 //     }
 //     return res;
 // }
+const int N = 4005;
+int ans;
+bool visited[N];
+vector<int> g[N];
+pair<int, int> dfs(int v, string &s)
+{
+
+    int black = (s[v - 1] == 'B');
+    int white = (s[v - 1] == 'W');
+
+    for (int child : g[v])
+    {
+        auto [cw, cb] = dfs(child, s);
+        black += cb;
+        white += cw;
+    }
+    if (black == white)
+        ans++;
+    return {white, black};
+}
 void tajwone17()
 {
+    int n;
+    cin >> n;
+
+    for (int i = 1; i <= n; i++)
+        g[i].clear();
+
+    for (int i = 2; i <= n; i++)
+    {
+        int p;
+        cin >> p;
+        g[p].push_back(i);
+    }
+
+    string s;
+    cin >> s;
+
+    ans = 0;
+    dfs(1, s);
+
+    cout << ans << endl;
 }
 
 int32_t main()

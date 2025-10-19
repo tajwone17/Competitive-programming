@@ -37,6 +37,46 @@ using namespace std;
 // }
 void tajwone17()
 {
+    int n, k;
+    cin >> n >> k;
+    string s;
+    cin >> s;
+    int ans = 0;
+
+    bool flag = 0;
+    int idx = -1;
+    int cnt = 0;
+    for (int i = 0; i < n; i++)
+    {
+        if (s[i] == '1')
+        {
+            flag = 1;
+            idx = i;
+            ans++;
+            break;
+        }
+    }
+    for (int i = idx; i < n; i++)
+    {
+
+        if (s[i] == '1' && flag)
+        {
+            if (cnt >= k - 1)
+            {
+                ans++;
+            }
+            cnt = 0;
+        }
+        else if (s[i] == '0')
+        {
+            cnt++;
+        }
+    }
+    // if (cnt >= k - 1 && s[n - 1] == '1')
+    // {
+    //     ans++;
+    // }
+    cout << ans << endl;
 }
 
 int32_t main()
