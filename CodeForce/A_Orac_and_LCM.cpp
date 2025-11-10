@@ -35,21 +35,35 @@ using namespace std;
 //     }
 //     return res;
 // }
+int lcm(int a, int b)
+{
+    return (a / __gcd(a, b)) * b;
+}
+
 void tajwone17()
 {
-   
+    int n;
+    cin >> n;
+    vector<int> lcm_all;
+    vector<int> a(n);
+    for (int i = 0; i < n; i++)
+        cin >> a[i];
+    int gcd_lcm = 0;
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = i + 1; j < n; j++)
+        {
+            gcd_lcm = __gcd(gcd_lcm, lcm(a[i], a[j]));
+        }
+    }
+    cout << gcd_lcm << endl;
 }
 
 int32_t main()
 {
     freePalestine;
-    int t;
-    cin >> t;
-    // cin.ignore();
-    for (int i = 1; i <= t; i++)
-    {
-        // cout<<"Case #"<<i<<": ";
-        tajwone17();
-    }
+
+    tajwone17();
+
     technologia;
 }

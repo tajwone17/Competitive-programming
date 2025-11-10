@@ -16,15 +16,18 @@ using namespace std;
 // int a[MAX];
 
 // const int M=998244353;
-// int mod(long long x){
-//     return ((x%M + M)%M);
+int mod(long long x, long long m)
+{
+    return ((x % m + m) % m);
+}
+// int add(long long a, long long b, long long m)
+// {
+//     return mod(mod(a, m) + mod(b, m), m);
 // }
-// int add(long long a, long long b){
-//     return mod(mod(a)+mod(b));
-// }
-// int mul(long long a, long long b){
-//     return mod(mod(a)*mod(b));
-// }
+int mul(long long a, long long b, long long m)
+{
+    return mod(mod(a, m) * mod(b, m), m);
+}
 // int mod_pow(int base, int exp) {
 //     int res = 1;
 //     while (exp > 0) {
@@ -37,19 +40,32 @@ using namespace std;
 // }
 void tajwone17()
 {
-   
+    int n, m;
+    cin >> n >> m;
+    vector<int> a(n);
+    int sum = 1;
+    if (n > m)
+    {
+        cout << 0;
+        return ;
+    }
+    for (int i = 0; i < n; i++)
+        cin >> a[i];
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = i + 1; j < n; j++)
+        {
+            sum = mul(sum, abs(a[i] - a[j]), m);
+        }
+    }
+    cout << sum << endl;
 }
 
 int32_t main()
 {
     freePalestine;
-    int t;
-    cin >> t;
-    // cin.ignore();
-    for (int i = 1; i <= t; i++)
-    {
-        // cout<<"Case #"<<i<<": ";
-        tajwone17();
-    }
+
+    tajwone17();
+
     technologia;
 }

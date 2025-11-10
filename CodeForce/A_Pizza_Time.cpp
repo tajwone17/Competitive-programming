@@ -35,9 +35,12 @@ using namespace std;
 //     }
 //     return res;
 // }
-void tajwone17()
-{
-   
+void tajwone17() {
+    int n;
+    cin >> n;
+    int ans = (n-1) / 2;
+
+    cout << ans << endl;
 }
 
 int32_t main()

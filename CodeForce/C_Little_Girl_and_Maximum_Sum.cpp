@@ -37,19 +37,44 @@ using namespace std;
 // }
 void tajwone17()
 {
-   
+    int n, q;
+    cin >> n >> q;
+    vector<int> arr(n);
+    for (int i = 0; i < n; i++)
+        cin >> arr[i];
+    vector<int> prefix(n + 1, 0);
+    for (int i = 0; i < q; i++)
+    {
+        int l, r;
+        cin >> l >> r;
+        prefix[l - 1]++;
+        if (r < n)
+            prefix[r]--;
+    }
+    for (int i = 1; i <= n; i++)
+        prefix[i] += prefix[i - 1];
+
+    vector<pair<int, int>> freq;
+    for (int i = 0; i < n; i++)
+    {
+        freq.push_back({prefix[i], i + 1});
+    }
+    sort(freq.rbegin(), freq.rend());
+    int sum = 0;
+    sort(arr.rbegin(), arr.rend());
+    for (int i = 0; i < freq.size(); i++)
+    {
+        // cout << freq[i].first << " " << freq[i].second << endl;
+        sum += arr[i] * freq[i].first;
+    }
+    cout << sum << endl;
 }
 
 int32_t main()
 {
     freePalestine;
-    int t;
-    cin >> t;
-    // cin.ignore();
-    for (int i = 1; i <= t; i++)
-    {
-        // cout<<"Case #"<<i<<": ";
-        tajwone17();
-    }
+
+    tajwone17();
+
     technologia;
 }

@@ -35,21 +35,55 @@ using namespace std;
 //     }
 //     return res;
 // }
+const int N = 2e5 + 10;
+bool visited[N];
+vector<int> g[N];
+vector<int> ans;
+int dfs(int v, int curr)
+{
+    // take action on vertex before entering the vertex
+    visited[v] = true;
+    int cnt = 0;
+    for (int child : g[v])
+    {
+        if (visited[child])
+            continue;
+        // take action on child before entering the child node
+
+        cnt += dfs(child, curr + 1);
+        // take action on child after exiting the child node
+    }
+    // take action on vertex before exiting the vertex
+    ans.push_back(curr - cnt);
+    return cnt + 1;
+}
 void tajwone17()
 {
-   
+    int n, k;
+    cin >> n >> k;
+    for (int i = 0; i < n - 1; i++)
+    {
+        int u, v;
+        cin >> u >> v;
+        g[u].push_back(v);
+        g[v].push_back(u);
+    }
+    int curr = 0;
+    dfs(1, curr);
+    sort(ans.rbegin(), ans.rend());
+    int sum = 0;
+    for (int i = 0; i < k; i++)
+    {
+        sum += ans[i];
+    }
+    cout << sum << endl;
 }
 
 int32_t main()
 {
     freePalestine;
-    int t;
-    cin >> t;
-    // cin.ignore();
-    for (int i = 1; i <= t; i++)
-    {
-        // cout<<"Case #"<<i<<": ";
-        tajwone17();
-    }
+
+    tajwone17();
+
     technologia;
 }

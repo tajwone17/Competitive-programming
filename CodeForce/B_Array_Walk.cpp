@@ -35,11 +35,36 @@ using namespace std;
 //     }
 //     return res;
 // }
-void tajwone17()
+int n, k, z;
+vector<int> a;
+vector<vector<int>> dp;
+
+int fun(int i, int moves, int leftUsed)
 {
-   
+    if (moves == k)
+        return a[i];
+    if (dp[i][leftUsed] != -1)
+        return dp[i][leftUsed];
+
+    int res = 0;
+    if (i + 1 < n)
+        res = max(res, a[i] + fun(i + 1, moves + 1, leftUsed));
+    if (i > 0 && leftUsed < z)
+        res = max(res, a[i] + fun(i - 1, moves + 1, leftUsed + 1));
+
+    return dp[i][leftUsed] = res;
 }
 
+void tajwone17()
+{
+    cin >> n >> k >> z;
+    a.resize(n);
+    for (int i = 0; i < n; i++)
+        cin >> a[i];
+
+    dp.assign(k + 2, vector<int>(z + 2, -1));
+    cout << fun(0, 0, 0) << endl;
+}
 int32_t main()
 {
     freePalestine;

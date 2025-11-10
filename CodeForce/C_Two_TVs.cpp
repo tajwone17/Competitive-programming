@@ -35,21 +35,38 @@ using namespace std;
 //     }
 //     return res;
 // }
+
 void tajwone17()
 {
-   
+    int n;
+    cin >> n;
+    vector<pair<int, int>> v;
+    for (int i = 0; i < n; i++)
+    {
+        int s, e;
+        cin >> s >> e;
+        v.push_back({s, 1});
+        v.push_back({e + 1, -1});
+    }
+    sort(v.begin(), v.end());
+    int sum = 0;
+    for (auto &it : v)
+    {
+        sum += it.second;
+        if (sum > 2)
+        {
+            no;
+            return;
+        }
+    }
+    yes;
 }
 
 int32_t main()
 {
     freePalestine;
-    int t;
-    cin >> t;
-    // cin.ignore();
-    for (int i = 1; i <= t; i++)
-    {
-        // cout<<"Case #"<<i<<": ";
-        tajwone17();
-    }
+
+    tajwone17();
+
     technologia;
 }
